@@ -67,7 +67,7 @@ public class Multiplayer_Game_Load : MonoBehaviour {
                     obj.GetComponent<Image>().sprite = Heart;
                     obj.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(200 / Players.Count * aspect_ratio, 200 / Players.Count * aspect_ratio);
                     obj.transform.SetParent(this.gameObject.transform.Find("Canvas_P"+(i+1)));
-                    float x = -910 + j * 200/Players.Count + 960 * ((int)(i+1) / (int)3);
+                    float x = -910 + j * 200/Players.Count + 960 * ((int)i / (int)3);
                     float y = -(((float)1920 / (float)Screen.width) * Screen.height) / 2 + 50;
                     y+=540 * (i % 2);
                     obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
