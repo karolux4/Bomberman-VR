@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Map Objects
+  - Boxes
+  - Walls
+  - Strength_power_up
+  - Limit_power_up
+  - Bounce_power_up
+  - Speed_power_up
+  - Extra_life_power_up
+  - Bomb_kick_power_up
+  - AI
+  - Bombs
+  - Sensitivity
+  - Stats
+  - Game_End_Box
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Map
+  - Player
+  - Bombs
+  - False_bomb
+  - AI
+  - P1_UI
+  - P2_UI
+  - Power_ups
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
