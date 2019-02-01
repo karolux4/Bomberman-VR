@@ -12,7 +12,7 @@
 [Aa]ssets/AssetStoreTools*
 
 #Probuilder Data
-/Assets/ProBuilder/*
+/Assets/ProBuilder Data/*
 
 # Visual Studio cache directory
 .vs/
