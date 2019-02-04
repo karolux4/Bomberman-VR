@@ -7,7 +7,7 @@ public class Sensitivity_Value : MonoBehaviour {
     public float Sensitivity;
 	// Use this for initialization
 	void Start () {
-        Sensitivity = 3;
+        Sensitivity = 0.2f;
         DontDestroyOnLoad(this.gameObject);
 	}
 }

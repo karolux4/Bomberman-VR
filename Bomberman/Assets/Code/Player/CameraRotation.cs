@@ -22,7 +22,7 @@ public class CameraRotation : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        sensitivity = GameObject.Find("Sensitivity").GetComponent<Sensitivity_Value>().Sensitivity;
+        /*sensitivity = GameObject.Find("Sensitivity").GetComponent<Sensitivity_Value>().Sensitivity;
         if ((Time.timeScale != 0)&&(Main_Camera_Control.transform.localPosition.y<3))
         {
             var mouse_delta = new Vector2(Input.GetAxisRaw(MouseX), 0f);
@@ -40,6 +40,9 @@ public class CameraRotation : MonoBehaviour {
             }
             Main_Camera_Control.transform.localRotation = Quaternion.AngleAxis(-prev_mouse_pos.y, Vector3.right);
             player.transform.localRotation = Quaternion.AngleAxis(prev_mouse_pos.x, player.transform.up);
-        }
+        }*/
+        Debug.Log(Input.acceleration.x);
+        player.transform.localRotation = new Quaternion(0f, this.gameObject.transform.localRotation.y*2, 0f,transform.localRotation.w);
+        Main_Camera_Control.transform.localRotation = new Quaternion(0f, -this.gameObject.transform.localRotation.y, 0f, transform.localRotation.w);
 	}
 }
