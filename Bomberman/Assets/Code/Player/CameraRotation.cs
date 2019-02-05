@@ -41,8 +41,14 @@ public class CameraRotation : MonoBehaviour {
             Main_Camera_Control.transform.localRotation = Quaternion.AngleAxis(-prev_mouse_pos.y, Vector3.right);
             player.transform.localRotation = Quaternion.AngleAxis(prev_mouse_pos.x, player.transform.up);
         }*/
-        Debug.Log(Input.acceleration.x);
-        player.transform.localRotation = new Quaternion(0f, this.gameObject.transform.localRotation.y*2, 0f,transform.localRotation.w);
-        Main_Camera_Control.transform.localRotation = new Quaternion(0f, -this.gameObject.transform.localRotation.y, 0f, transform.localRotation.w);
+        float y = (float)this.gameObject.transform.localRotation.eulerAngles.y; //* (float)3)/(float)2;
+        if(y>180)
+        {
+            y = -360 +(y-((int)y/(int)360)*360);
+        }
+        //float y1 = (float)(y*3)/(float)2;
+        //Debug.Log(y+" "+y1);
+        player.transform.localRotation = Quaternion.Euler(0f,y , 0f);
+        Main_Camera_Control.transform.localRotation = Quaternion.Euler(0f, -this.gameObject.transform.localRotation.eulerAngles.y, 0f);
 	}
 }

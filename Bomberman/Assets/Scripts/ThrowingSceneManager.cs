@@ -28,20 +28,7 @@ public class ThrowingSceneManager : MonoBehaviour
     private void InteractionManager_InteractionSourcePressed(InteractionSourcePressedEventArgs args)
     {
         uint id = args.state.source.id;
-        if (args.pressType == InteractionSourcePressType.Menu || args.pressType == InteractionSourcePressType.Touchpad)
-        {
-            if (devices.ContainsKey(id))
-            {
-                int modelIndex = this.modelIndecies[id];
-                RemoveDevice(id);
-                AddDevice(id, ++modelIndex % ThrowingAssets.Length);
-            }
-            else if (modelIndecies.ContainsKey(id))
-            {
-                this.modelIndecies[id] = ++this.modelIndecies[id] % ThrowingAssets.Length;
-            }
-        }
-        else if (args.pressType == InteractionSourcePressType.Grasp || args.pressType == InteractionSourcePressType.Select)
+        if (args.pressType == InteractionSourcePressType.Select)
         {
             if (isDetatched.ContainsKey(id))    
             {
@@ -52,7 +39,7 @@ public class ThrowingSceneManager : MonoBehaviour
 
     private void InteractionManager_InteractionSourceReleased(InteractionSourceReleasedEventArgs args)
     {
-        if (args.pressType == InteractionSourcePressType.Grasp || args.pressType == InteractionSourcePressType.Select)
+        if (args.pressType == InteractionSourcePressType.Select)
         {
             uint id = args.state.source.id;
             if (devices.ContainsKey(id))
@@ -93,6 +80,7 @@ public class ThrowingSceneManager : MonoBehaviour
                 if (sourcePose.TryGetPosition(out position, this.ControllerPose) &&
                     sourcePose.TryGetRotation(out rotation, this.ControllerPose)) // defaults to grip
                 {
+                    rotation = Quaternion.Euler(0f, 0f, 0f);
                     SetTransform(devices[id], position, rotation);
                 }
             }
@@ -112,6 +100,7 @@ public class ThrowingSceneManager : MonoBehaviour
                     if (sourcePose.TryGetPosition(out position, this.ControllerPose) &&
                     sourcePose.TryGetRotation(out rotation, this.ControllerPose)) // defaults to grip
                     {
+                        rotation = Quaternion.Euler(0f, 0f, 0f);
                         SetTransform(devices[id], position, rotation);
                     }
                 }

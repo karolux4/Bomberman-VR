@@ -35,42 +35,42 @@ public static class Throwing
         return true;
     }
 
-    public static bool TryGetNodeState(XRNode node, out XRNodeState nodeState)
-    {
-        List<XRNodeState> nodeStates = new List<XRNodeState>();
-        InputTracking.GetNodeStates(nodeStates);
-        nodeState = nodeStates.Where(p => p.nodeType == node).FirstOrDefault();
+    /* public static bool TryGetNodeState(XRNode node, out XRNodeState nodeState)
+     {
+         List<XRNodeState> nodeStates = new List<XRNodeState>();
+         InputTracking.GetNodeStates(nodeStates);
+         nodeState = nodeStates.Where(p => p.nodeType == node).FirstOrDefault();
 
-        return nodeState.tracked;
-    }
+         return nodeState.tracked;
+     }
 
-    public static bool TryGetThrownObjectVelAngVel(XRNode throwingController, Vector3 thrownObjectCenterOfMass, out Vector3 objectVelocity, out Vector3 objectAngularVelocity)
-    {
-        XRNodeState throwingControllerState;
-        if (!TryGetNodeState(throwingController, out throwingControllerState))
-        { 
-            objectVelocity = objectAngularVelocity = default(Vector3);
-            return false;
-        }
+     public static bool TryGetThrownObjectVelAngVel(XRNode throwingController, Vector3 thrownObjectCenterOfMass, out Vector3 objectVelocity, out Vector3 objectAngularVelocity)
+     {
+         XRNodeState throwingControllerState;
+         if (!TryGetNodeState(throwingController, out throwingControllerState))
+         { 
+             objectVelocity = objectAngularVelocity = default(Vector3);
+             return false;
+         }
 
-        return TryGetThrownObjectVelAngVel(throwingControllerState, thrownObjectCenterOfMass, out objectVelocity, out objectAngularVelocity);
-    }
+         return TryGetThrownObjectVelAngVel(throwingControllerState, thrownObjectCenterOfMass, out objectVelocity, out objectAngularVelocity);
+     }
 
-    public static bool TryGetThrownObjectVelAngVel(XRNodeState throwingControllerState, Vector3 thrownObjectCenterOfMass, out Vector3 objectVelocity, out Vector3 objectAngularVelocity)
-    {
-        Vector3 controllerPos, controllerVelocity, controllerAngularVelocity;
+     public static bool TryGetThrownObjectVelAngVel(XRNodeState throwingControllerState, Vector3 thrownObjectCenterOfMass, out Vector3 objectVelocity, out Vector3 objectAngularVelocity)
+     {
+         Vector3 controllerPos, controllerVelocity, controllerAngularVelocity;
 
-        if (!throwingControllerState.TryGetPosition(out controllerPos) ||
-            !throwingControllerState.TryGetVelocity(out controllerVelocity) ||
-            !throwingControllerState.TryGetAngularVelocity(out controllerAngularVelocity))
-        {
-            objectVelocity = objectAngularVelocity = default(Vector3);
-            return false;
-        }
+         if (!throwingControllerState.TryGetPosition(out controllerPos) ||
+             !throwingControllerState.TryGetVelocity(out controllerVelocity) ||
+             !throwingControllerState.TryGetAngularVelocity(out controllerAngularVelocity))
+         {
+             objectVelocity = objectAngularVelocity = default(Vector3);
+             return false;
+         }
 
-        GetThrownObjectVelAngVel(controllerPos, controllerVelocity, controllerAngularVelocity, thrownObjectCenterOfMass, out objectVelocity, out objectAngularVelocity);
-        return true;
-    }
+         GetThrownObjectVelAngVel(controllerPos, controllerVelocity, controllerAngularVelocity, thrownObjectCenterOfMass, out objectVelocity, out objectAngularVelocity);
+         return true;
+     }*/
 
     public static bool TryThrow(this Rigidbody rb, InteractionSourcePose throwingConctoller)
     {
@@ -86,7 +86,7 @@ public static class Throwing
         return true;
     }
 
-    public static bool TryThrow(this Rigidbody rb, XRNodeState throwingConctoller)
+   /* public static bool TryThrow(this Rigidbody rb, XRNodeState throwingConctoller)
     {
         Vector3 velocity, angularVelocity;
         if (!TryGetThrownObjectVelAngVel(throwingConctoller, rb.transform.TransformPoint(rb.centerOfMass), out velocity, out angularVelocity))
@@ -112,5 +112,5 @@ public static class Throwing
         rb.velocity = velocity;
         rb.isKinematic = false;
         return true;
-    }
+    }*/
 }
