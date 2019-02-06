@@ -5,14 +5,98 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: default
+    100004: Cube_Cube_Crate_material
+    100006: Plank.001_Cube.047_Cube.000_Wood
+    100008: Plank.002_Cube.047_Cube.000_Wood
+    100010: Plank.003_Cube.047_Cube.000_Wood
+    100012: Plank_Cube.047_Cube.000_Wood
+    100014: Cube.001_Cube.001_Crate_material
+    100016: Cube.001_Cube.001_Wood
     400000: //RootNode
     400002: default
+    400004: Cube_Cube_Crate_material
+    400006: Plank.001_Cube.047_Cube.000_Wood
+    400008: Plank.002_Cube.047_Cube.000_Wood
+    400010: Plank.003_Cube.047_Cube.000_Wood
+    400012: Plank_Cube.047_Cube.000_Wood
+    400014: Cube.001_Cube.001_Crate_material
+    400016: Cube.001_Cube.001_Wood
     2100000: defaultMat
+    2100002: Cube_Cube_Crate_materialMat
+    2100004: Plank.001_Cube.047_Cube.000_WoodMat
+    2100006: Plank.002_Cube.047_Cube.000_WoodMat
+    2100008: Plank.003_Cube.047_Cube.000_WoodMat
+    2100010: Plank_Cube.047_Cube.000_WoodMat
+    2100012: Cube.001_Cube.001_Crate_materialMat
+    2100014: Cube.001_Cube.001_WoodMat
     2300000: default
+    2300002: Cube_Cube_Crate_material
+    2300004: Plank.001_Cube.047_Cube.000_Wood
+    2300006: Plank.002_Cube.047_Cube.000_Wood
+    2300008: Plank.003_Cube.047_Cube.000_Wood
+    2300010: Plank_Cube.047_Cube.000_Wood
+    2300012: Cube.001_Cube.001_Crate_material
+    2300014: Cube.001_Cube.001_Wood
     3300000: default
+    3300002: Cube_Cube_Crate_material
+    3300004: Plank.001_Cube.047_Cube.000_Wood
+    3300006: Plank.002_Cube.047_Cube.000_Wood
+    3300008: Plank.003_Cube.047_Cube.000_Wood
+    3300010: Plank_Cube.047_Cube.000_Wood
+    3300012: Cube.001_Cube.001_Crate_material
+    3300014: Cube.001_Cube.001_Wood
     4300000: default
+    4300002: Cube_Cube_Crate_material
+    4300004: Plank.001_Cube.047_Cube.000_Wood
+    4300006: Plank.002_Cube.047_Cube.000_Wood
+    4300008: Plank.003_Cube.047_Cube.000_Wood
+    4300010: Plank_Cube.047_Cube.000_Wood
+    4300012: Cube.001_Cube.001_Crate_material
+    4300014: Cube.001_Cube.001_Wood
     6400000: default
+    6400002: Cube_Cube_Crate_material
+    6400004: Plank.001_Cube.047_Cube.000_Wood
+    6400006: Plank.002_Cube.047_Cube.000_Wood
+    6400008: Plank.003_Cube.047_Cube.000_Wood
+    6400010: Plank_Cube.047_Cube.000_Wood
+    6400012: Cube.001_Cube.001_Crate_material
+    6400014: Cube.001_Cube.001_Wood
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube.001_Cube.001_Crate_materialMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube.001_Cube.001_WoodMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_Crate_materialMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plank.001_Cube.047_Cube.000_WoodMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plank.002_Cube.047_Cube.000_WoodMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plank.003_Cube.047_Cube.000_WoodMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plank_Cube.047_Cube.000_WoodMat
+    second: {fileID: 2100000, guid: ffcc6095e9c6b474dbd3354c58ba5210, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -48,9 +132,10 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 1
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -75,6 +160,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -89,7 +177,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
