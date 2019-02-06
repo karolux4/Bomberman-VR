@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThrowingAssets:
-  - {fileID: 6447857181856774276, guid: b994e964f1269b247b360cf26a9ddeef, type: 3}
   - {fileID: 1436528290143838, guid: 1fdf974ddb556bc49a9185d63a788a9c, type: 3}
   ControllerPose: 0
   RealWorldRoot: {fileID: 1107250497}
@@ -533,7 +532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813945114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8550434, y: -4.86, z: -1.732381}
+  m_LocalPosition: {x: 5.8550434, y: -3.55, z: -1.732381}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}

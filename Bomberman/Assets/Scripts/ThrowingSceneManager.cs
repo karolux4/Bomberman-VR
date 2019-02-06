@@ -13,16 +13,14 @@ public class ThrowingSceneManager : MonoBehaviour
     private readonly Dictionary<uint, bool> isDetatched = new Dictionary<uint, bool>();
 
     // Use this for initialization
-    void Start ()
+    void Update ()
     {
-		if (ThrowingAssets.Length == 0)
+        if (Input.GetButtonDown("Fire1"))
         {
-            throw new System.Exception("ThrowingSceneManager needs to have some throwable objects!");
-        }   
-
-        InteractionManager.InteractionSourceReleased += InteractionManager_InteractionSourceReleased;
-        InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
-        Application.onBeforeRender += Application_onBeforeRender;
+            InteractionManager.InteractionSourceReleased += InteractionManager_InteractionSourceReleased;
+            InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
+            Application.onBeforeRender += Application_onBeforeRender;
+        }
     }
 
     private void InteractionManager_InteractionSourcePressed(InteractionSourcePressedEventArgs args)
@@ -50,7 +48,7 @@ public class ThrowingSceneManager : MonoBehaviour
                 {
                     rigidbody = go.GetComponentInChildren<Rigidbody>();
                 }
-                if (rigidbody.TryThrow(args.state.sourcePose))
+                if (rigidbody.TryThrow(args.state.sourcePose,this.gameObject))
                 {
                     DetatchDevice(id);
                 }
@@ -80,7 +78,7 @@ public class ThrowingSceneManager : MonoBehaviour
                 if (sourcePose.TryGetPosition(out position, this.ControllerPose) &&
                     sourcePose.TryGetRotation(out rotation, this.ControllerPose)) // defaults to grip
                 {
-                    rotation = Quaternion.Euler(0f, 0f, 0f);
+                    //rotation = Quaternion.Euler(0f, 0f, 0f);
                     SetTransform(devices[id], position, rotation);
                 }
             }
@@ -100,7 +98,7 @@ public class ThrowingSceneManager : MonoBehaviour
                     if (sourcePose.TryGetPosition(out position, this.ControllerPose) &&
                     sourcePose.TryGetRotation(out rotation, this.ControllerPose)) // defaults to grip
                     {
-                        rotation = Quaternion.Euler(0f, 0f, 0f);
+                        //rotation = Quaternion.Euler(0f, 0f, 0f);
                         SetTransform(devices[id], position, rotation);
                     }
                 }

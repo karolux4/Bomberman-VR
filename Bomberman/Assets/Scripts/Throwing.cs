@@ -72,17 +72,18 @@ public static class Throwing
          return true;
      }*/
 
-    public static bool TryThrow(this Rigidbody rb, InteractionSourcePose throwingConctoller)
+    public static bool TryThrow(this Rigidbody rb, InteractionSourcePose throwingConctoller, GameObject player)
     {
         Vector3 velocity, angularVelocity;
         if (!TryGetThrownObjectVelAngVel(throwingConctoller, rb.transform.TransformPoint(rb.centerOfMass), out velocity, out angularVelocity))
         {
             return false;
         }
-
-        rb.angularVelocity = angularVelocity;
+        /*rb.angularVelocity = angularVelocity;
         rb.velocity = velocity;
-        rb.isKinematic = false;
+        rb.isKinematic = false;*/
+        Debug.Log(velocity.magnitude);
+        rb.AddForce(player.transform.forward * velocity.magnitude/5f, ForceMode.Impulse);
         return true;
     }
 
