@@ -82,9 +82,21 @@ public static class Throwing
         /*rb.angularVelocity = angularVelocity;
         rb.velocity = velocity;
         rb.isKinematic = false;*/
-        Debug.Log(velocity.magnitude);
-        rb.AddForce(player.transform.forward * velocity.magnitude/5f, ForceMode.Impulse);
-        return true;
+        //Debug.Log(velocity.magnitude);
+        float strength = velocity.magnitude / 5f;
+        if(strength>15)
+        {
+            strength = 15;
+        }
+        if(strength>=3)
+        {
+            rb.AddForce(player.transform.forward * velocity.magnitude / 5f, ForceMode.Impulse);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
    /* public static bool TryThrow(this Rigidbody rb, XRNodeState throwingConctoller)

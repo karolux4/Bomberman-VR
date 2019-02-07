@@ -43,8 +43,10 @@ public class Shooting_physics : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetButtonDown(Shoot_button))
+        if (Input.GetButtonDown(Shoot_button)&&(count<player.GetComponent<Additional_power_ups>().limit)&&(allowed_to_throw))
         {
+            count++;
+            allowed_to_throw = false;
             InteractionManager.InteractionSourceReleased += InteractionManager_InteractionSourceReleased;
             InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
             Application.onBeforeRender += Application_onBeforeRender;
@@ -78,9 +80,11 @@ public class Shooting_physics : MonoBehaviour {
                 if (rigidbody.TryThrow(args.state.sourcePose,player))
                 {
                     DetatchDevice(id);
+                    Debug.Log("Throw");
                 }
                 else
                 {
+                    RemoveDevice(id);
                     throw new System.Exception("Throw failed!!!");
                 }
             }
@@ -142,8 +146,10 @@ public class Shooting_physics : MonoBehaviour {
 
     private void RemoveDevice(uint id)
     {
+        Debug.Log("Destroy1");
         if (devices.ContainsKey(id))
         {
+            Debug.Log("Destroy2");
             Destroy(devices[id].gameObject);
             devices.Remove(id);
         }
@@ -154,6 +160,7 @@ public class Shooting_physics : MonoBehaviour {
         if (devices.ContainsKey(id))
         {
             devices[id].SetParent(null);
+            Shoot(devices[id].gameObject);
             isDetatched[id] = true;
             devices.Remove(id);
         }
@@ -184,26 +191,25 @@ public class Shooting_physics : MonoBehaviour {
             Shoot(); // dropping bomb
         }
 	}*/
-    void Shoot()
+    void Shoot(GameObject player_bomb)
     {
 
-        Vector3 pos = player.GetComponent<Transform>().localPosition+new Vector3(0f,0.5f,0f); // getting player position
+        /*Vector3 pos = player.GetComponent<Transform>().localPosition+new Vector3(0f,0.5f,0f); // getting player position
         pos += transform.forward*0.7f;
         bomb.GetComponent<Transform>().localPosition = pos; // changing bomb location
         GameObject player_bomb= Instantiate(bomb); // creating bomb in the scene
-        player_bomb.name = player.name + "_bomb_"+count; // renaming bomb
+        player_bomb.name = player.name + "_bomb_"+count; // renaming bomb*/
         player_bomb.layer = 12;
-        if (released)
-        {
+        /*
             SphereCollider sphereCollider = player_bomb.AddComponent<SphereCollider>() as SphereCollider; // adding colliders and rigidbody
-            sphereCollider.radius = bomb_collision_radius;
+            sphereCollider.radius = bomb_collision_radius;*/
             if (player.GetComponent<Additional_power_ups>().bounce_limit != 0)
             {
-                sphereCollider.material = bounce;
+                player_bomb.GetComponent<SphereCollider>().material = bounce;
             }
-            Rigidbody rb = player_bomb.AddComponent<Rigidbody>();
+            /*Rigidbody rb = player_bomb.AddComponent<Rigidbody>();
             rb.freezeRotation = true;
-            rb.AddForce(transform.forward * strength, ForceMode.Impulse);
+            rb.AddForce(transform.forward * strength, ForceMode.Impulse);*/
             player_bomb.AddComponent<Bomb_height_bug_fix>();
             player_bomb.GetComponent<Bomb_height_bug_fix>().creator = player;
             player_bomb.AddComponent<Bomb_spawn_collision>();
@@ -212,6 +218,5 @@ public class Shooting_physics : MonoBehaviour {
             player_bomb.GetComponent<Bomb_spawn_collision>().explosion_horizontal = explosion_horizontal;
             player_bomb.GetComponent<Bomb_spawn_collision>().explosion = explosion;
             player_bomb.GetComponent<Bomb_spawn_collision>().mixer = mixer;
-        }
     }
 }
