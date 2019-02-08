@@ -21,9 +21,7 @@ public class Shooting_physics : MonoBehaviour {
     public AudioMixerGroup mixer;
     public string Shoot_button;
     private bool released = true;
-    /// <summary>
-    /// Start
-    /// </summary>
+
     public GameObject[] ThrowingAssets;
     public InteractionSourceNode ControllerPose = InteractionSourceNode.Grip;
     public Transform RealWorldRoot;
@@ -32,34 +30,35 @@ public class Shooting_physics : MonoBehaviour {
     private readonly Dictionary<uint, int> modelIndecies = new Dictionary<uint, int>();
     private readonly Dictionary<uint, bool> isDetatched = new Dictionary<uint, bool>();
 
-/// <summary>
-/// End
-/// </summary>
     private void Start()
     {
         count = 0;
         allowed_to_throw = true;
-        
+        InteractionManager.InteractionSourceReleased += InteractionManager_InteractionSourceReleased;
+        InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
+        Application.onBeforeRender += Application_onBeforeRender;
     }
     private void Update()
     {
-        if (Input.GetButtonDown(Shoot_button)&&(count<player.GetComponent<Additional_power_ups>().limit)&&(allowed_to_throw))
+        /*foreach(var dev in devices)
         {
-            count++;
-            allowed_to_throw = false;
-            InteractionManager.InteractionSourceReleased += InteractionManager_InteractionSourceReleased;
-            InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
-            Application.onBeforeRender += Application_onBeforeRender;
-        }
+            Debug.Log(dev.Value);
+        }*/
+       // Debug.Log(count + " " + allowed_to_throw);
     }
     private void InteractionManager_InteractionSourcePressed(InteractionSourcePressedEventArgs args)
     {
-        uint id = args.state.source.id;
-        if (args.pressType == InteractionSourcePressType.Select)
+        //Debug.Log(count);
+        if ((count < player.GetComponent<Additional_power_ups>().limit) && (allowed_to_throw))
         {
-            if (isDetatched.ContainsKey(id))
+            uint id = args.state.source.id;
+            if (args.pressType == InteractionSourcePressType.Select)
             {
-                isDetatched[id] = false;
+                if (isDetatched.ContainsKey(id))
+                {
+                    isDetatched[id] = false;
+                }
+                AddDevice(id);
             }
         }
     }
@@ -80,10 +79,11 @@ public class Shooting_physics : MonoBehaviour {
                 if (rigidbody.TryThrow(args.state.sourcePose,player))
                 {
                     DetatchDevice(id);
-                    Debug.Log("Throw");
                 }
                 else
                 {
+                    count--;
+                    allowed_to_throw = true;
                     RemoveDevice(id);
                     throw new System.Exception("Throw failed!!!");
                 }
@@ -109,14 +109,16 @@ public class Shooting_physics : MonoBehaviour {
                     SetTransform(devices[id], position, rotation);
                 }
             }
-            else if (sourceState.source.supportsPointing)
+            /*else if (sourceState.source.supportsPointing)
             {
                 if (this.modelIndecies.ContainsKey(id))
                 {
+                    Debug.Log("Add1");
                     this.AddDevice(id, this.modelIndecies[id]);
                 }
                 else
                 {
+                    Debug.Log("Add2");
                     this.AddDevice(id);
                 }
 
@@ -129,15 +131,17 @@ public class Shooting_physics : MonoBehaviour {
                         SetTransform(devices[id], position, rotation);
                     }
                 }
-            }
+            }*/
         }
     }
     private void AddDevice(uint id, int index = 0)
     {
         if (!devices.ContainsKey(id) && (!isDetatched.ContainsKey(id) || !isDetatched[id]))
         {
+            count++;
+            allowed_to_throw = false;
             GameObject go = Instantiate(this.ThrowingAssets[index], player.transform);
-            go.name = player.name + "_bomb_" + id;
+            go.name = player.name + "_bomb";
             devices[id] = go.transform;
             modelIndecies[id] = index;
             isDetatched[id] = false;
@@ -146,10 +150,8 @@ public class Shooting_physics : MonoBehaviour {
 
     private void RemoveDevice(uint id)
     {
-        Debug.Log("Destroy1");
         if (devices.ContainsKey(id))
         {
-            Debug.Log("Destroy2");
             Destroy(devices[id].gameObject);
             devices.Remove(id);
         }
@@ -168,7 +170,7 @@ public class Shooting_physics : MonoBehaviour {
 
     private void SetTransform(Transform t, Vector3 position, Quaternion rotation)
     {
-        t.localPosition = new Vector3(0f, 0.5f, 0f);// +transform.forward*0.7f;
+        t.localPosition = new Vector3(0f, 0.75f, 0f);// +transform.forward*0.7f;
         //Debug.Log(t.localPosition);
         t.localRotation = Quaternion.Euler(0f,0f,0f);
     }
@@ -193,7 +195,6 @@ public class Shooting_physics : MonoBehaviour {
 	}*/
     void Shoot(GameObject player_bomb)
     {
-
         /*Vector3 pos = player.GetComponent<Transform>().localPosition+new Vector3(0f,0.5f,0f); // getting player position
         pos += transform.forward*0.7f;
         bomb.GetComponent<Transform>().localPosition = pos; // changing bomb location

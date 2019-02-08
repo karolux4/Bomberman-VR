@@ -83,20 +83,18 @@ public static class Throwing
         rb.velocity = velocity;
         rb.isKinematic = false;*/
         //Debug.Log(velocity.magnitude);
-        float strength = velocity.magnitude / 5f;
-        if(strength>15)
+        float strength = Mathf.Abs(velocity.magnitude) / 2f;
+        if (strength > 25)
         {
-            strength = 15;
+            strength = 25;
         }
-        if(strength>=3)
-        {
-            rb.AddForce(player.transform.forward * velocity.magnitude / 5f, ForceMode.Impulse);
-            return true;
-        }
-        else
+        if(strength<3)
         {
             return false;
         }
+        Debug.Log(strength);
+        rb.AddForce(player.transform.forward * strength, ForceMode.Impulse);
+        return true;
     }
 
    /* public static bool TryThrow(this Rigidbody rb, XRNodeState throwingConctoller)
