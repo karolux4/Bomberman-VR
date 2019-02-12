@@ -82,6 +82,10 @@ public class Bomb_spawn_collision : MonoBehaviour {
                 gameObject.GetComponent<SphereCollider>().material = null;
                 kicked = true;
             }
+            if (creator.name == "Player1")
+            {
+                Debug.Log("Hit");
+            }
         }
         else if ((collision.gameObject.tag == "Map Objects") && (bounce_count < creator.GetComponent<Additional_power_ups>().bounce_limit))
         {

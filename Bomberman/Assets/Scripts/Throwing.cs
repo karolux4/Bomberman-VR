@@ -83,17 +83,16 @@ public static class Throwing
         rb.velocity = velocity;
         rb.isKinematic = false;*/
         //Debug.Log(velocity.magnitude);
-        float strength = Mathf.Abs(velocity.magnitude) / 4f;
-        if (strength > 12.5f)
+        float strength = Mathf.Abs(velocity.magnitude) / 3f;
+        if (strength > 17.5f)
         {
-            strength = 12.5f;
+            strength = 17.5f;
         }
-        if(strength<1.5f)
+        if(strength<2f)
         {
             return false;
         }
-        Debug.Log(strength);
-        rb.AddForce(player.transform.forward * strength, ForceMode.Impulse);
+        rb.AddForce(player.transform.forward*strength+new Vector3(0f,2f,0f), ForceMode.Impulse);
         return true;
     }
 

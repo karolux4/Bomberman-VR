@@ -28,7 +28,6 @@ public class Bomb_explosion : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         if (creator.tag == "Player")
         {
-            Debug.Log("--------------1");
             creator.GetComponent<Shooting_physics>().allowed_to_throw = true;
         }
         else
@@ -39,7 +38,6 @@ public class Bomb_explosion : MonoBehaviour {
         Explode("No");
         if (creator.tag == "Player")
         {
-            Debug.Log("--------------");
             creator.GetComponent<Shooting_physics>().count--;
         }
         else
@@ -90,7 +88,6 @@ public class Bomb_explosion : MonoBehaviour {
         {
             if (creator.tag == "Player")
             {
-                Debug.Log("--------------");
                 creator.GetComponent<Shooting_physics>().count--;
                 creator.GetComponent<Shooting_physics>().allowed_to_throw = true;
             }

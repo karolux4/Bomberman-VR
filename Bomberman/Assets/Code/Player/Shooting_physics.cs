@@ -48,7 +48,6 @@ public class Shooting_physics : MonoBehaviour {
     }
     private void InteractionManager_InteractionSourcePressed(InteractionSourcePressedEventArgs args)
     {
-        //Debug.Log(count);
         if ((count < player.GetComponent<Additional_power_ups>().limit) && (allowed_to_throw))
         {
             uint id = args.state.source.id;
@@ -170,8 +169,20 @@ public class Shooting_physics : MonoBehaviour {
 
     private void SetTransform(Transform t, Vector3 position, Quaternion rotation)
     {
-        t.localPosition = new Vector3(0f, 0.75f, 0.4f);// +transform.forward*0.7f;
-        //Debug.Log(t.localPosition);
+        float y1 = position.y - 1.1f;
+        if(y1>0.6f)
+        {
+            y1 = 0.6f;
+        }
+        else if(y1<0.4f)
+        {
+            y1 = 0.4f;
+        }
+        float z1 = Mathf.Sqrt(0.16f - Mathf.Pow((0.6f - y1), 2));
+        t.localPosition = new Vector3(0f, y1, z1);// +transform.forward*0.7f;
+       /* float angle = 135 - (0.44f - (Mathf.Pow(Mathf.Tan(y1 / z1), -1))) / 0.037f;
+        player.GetComponent<Arm_Movement>().L_Arm.GetComponent<Transform>().localEulerAngles = new Vector3(angle, 0f, -15f);
+        player.GetComponent<Arm_Movement>().R_Arm.GetComponent<Transform>().localEulerAngles = new Vector3(angle, 0f, 15f);*/
         t.localRotation = Quaternion.Euler(0f,0f,0f);
     }
 
@@ -200,10 +211,11 @@ public class Shooting_physics : MonoBehaviour {
         bomb.GetComponent<Transform>().localPosition = pos; // changing bomb location
         GameObject player_bomb= Instantiate(bomb); // creating bomb in the scene
         player_bomb.name = player.name + "_bomb_"+count; // renaming bomb*/
-        player_bomb.layer = 12;
+
         /*
             SphereCollider sphereCollider = player_bomb.AddComponent<SphereCollider>() as SphereCollider; // adding colliders and rigidbody
             sphereCollider.radius = bomb_collision_radius;*/
+            player_bomb.GetComponent<Rigidbody>().useGravity = true;
             if (player.GetComponent<Additional_power_ups>().bounce_limit != 0)
             {
                 player_bomb.GetComponent<SphereCollider>().material = bounce;
