@@ -75,14 +75,14 @@ public class Bomb_explosion : MonoBehaviour {
         CenterPosition(gameObject,out posX,out posZ);
         explosion_vertical.GetComponent<Transform>().localPosition = new Vector3(posX, 1.5f, posZ);
         explosion_horizontal.GetComponent<Transform>().localPosition = new Vector3(posX, 1.5f, posZ);
-        /*var main1 = explosion_vertical.GetComponent<ParticleSystem>().main;
+        var main1 = explosion_vertical.GetComponent<ParticleSystem>().main;
         main1.startSpeed = creator.GetComponent<Additional_power_ups>().bomb_power * 5f;
         var main2 = explosion_horizontal.GetComponent<ParticleSystem>().main;
-        main2.startSpeed = creator.GetComponent<Additional_power_ups>().bomb_power * 5f;*/
+        main2.startSpeed = creator.GetComponent<Additional_power_ups>().bomb_power * 5f;
         // vertical explosion
-        //Instantiate(explosion_vertical);
+        Instantiate(explosion_vertical);
         // horizontal explosion
-        //Instantiate(explosion_horizontal);
+        Instantiate(explosion_horizontal);
         List<GameObject> hit_players = new List<GameObject>();
         int i = -1;
         ExplosionRays(this.gameObject, creator.GetComponent<Additional_power_ups>().bomb_power,ref i,hit_players);

@@ -83,12 +83,12 @@ public static class Throwing
         rb.velocity = velocity;
         rb.isKinematic = false;*/
         //Debug.Log(velocity.magnitude);
-        float strength = Mathf.Abs(velocity.magnitude) / 2f;
-        if (strength > 25)
+        float strength = Mathf.Abs(velocity.magnitude) / 4f;
+        if (strength > 12.5f)
         {
-            strength = 25;
+            strength = 12.5f;
         }
-        if(strength<3)
+        if(strength<1.5f)
         {
             return false;
         }

@@ -170,7 +170,7 @@ public class Shooting_physics : MonoBehaviour {
 
     private void SetTransform(Transform t, Vector3 position, Quaternion rotation)
     {
-        t.localPosition = new Vector3(0f, 0.75f, 0f);// +transform.forward*0.7f;
+        t.localPosition = new Vector3(0f, 0.75f, 0.4f);// +transform.forward*0.7f;
         //Debug.Log(t.localPosition);
         t.localRotation = Quaternion.Euler(0f,0f,0f);
     }
