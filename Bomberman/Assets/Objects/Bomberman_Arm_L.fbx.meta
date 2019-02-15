@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 905750a781fae3a43bfb9dde6a913c44
 ModelImporter:
   serializedVersion: 23
@@ -190,24 +189,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 966a5662d6bf0144bab4f8bee342c9dc, type: 2}
-=======
-guid: 1a5c5489ca48bce4b81118cae59c4276
-ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Material
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Bomberman_arm_L
-    7400000: Bomberman_arm_L|FAIL
-    7400002: Bomberman_arm_L|RunAnimation.001
-    7400004: Bomberman_arm_L|WalkAnimation
-    7400006: Bomberman_arm_L|Walking_normalized
-    9500000: //RootNode
-  externalObjects: {}
->>>>>>> 86c380d61c47c8066fca6f47162780fa03702dc7
   materials:
     importMaterials: 1
     materialName: 0

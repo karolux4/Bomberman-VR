@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: e6298cc2e702b2341bd3d45f783f8ac3
-=======
-guid: ffc84491a17e3dc4b84468bec6cb09c6
->>>>>>> 86c380d61c47c8066fca6f47162780fa03702dc7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -14,21 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Slate.005
-<<<<<<< HEAD
   externalObjects: {}
-=======
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Crate_material
-    second: {fileID: 2100000, guid: 7d3dd338b5446a54fbbcdb6e94381655, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: e20fa1150ef1c8a41a3ad89fc8cc439b, type: 2}
->>>>>>> 86c380d61c47c8066fca6f47162780fa03702dc7
   materials:
     importMaterials: 1
     materialName: 0
