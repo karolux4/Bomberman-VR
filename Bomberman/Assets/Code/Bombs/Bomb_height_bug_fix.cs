@@ -7,7 +7,7 @@ public class Bomb_height_bug_fix : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(gameObject.GetComponent<Transform>().localPosition.y>2.3f)
+		if(gameObject.GetComponent<Transform>().localPosition.y>2.1f)
         {
             Destroy(this.gameObject);
             if (creator.tag == "Player")

@@ -15,13 +15,9 @@ public class Shooting_physics : MonoBehaviour {
     public PhysicMaterial bounce;
     public int count { get; set; }
     public bool allowed_to_throw { get; set; }
-    public float strength;
     public float bomb_collision_radius;
     public AudioClip explosion;
     public AudioMixerGroup mixer;
-    public string Shoot_button;
-    private bool released = true;
-
     public GameObject[] ThrowingAssets;
     public InteractionSourceNode ControllerPose = InteractionSourceNode.Grip;
     public Transform RealWorldRoot;
@@ -169,15 +165,16 @@ public class Shooting_physics : MonoBehaviour {
 
     private void SetTransform(Transform t, Vector3 position, Quaternion rotation)
     {
-        float y1 = position.y - 1.1f;
-        if(y1>0.6f)
+        float y1 = position.y - 0.8f;
+        if (y1 > 1f)
         {
-            y1 = 0.6f;
+            y1 = 1f;
         }
-        else if(y1<0.4f)
+        else if (y1 < 0f)
         {
-            y1 = 0.4f;
+            y1 = 0f;
         }
+        y1 = 0.4f + y1 / 5;
         float z1 = Mathf.Sqrt(0.16f - Mathf.Pow((0.6f - y1), 2));
         t.localPosition = new Vector3(0f, y1, z1);// +transform.forward*0.7f;
        /* float angle = 135 - (0.44f - (Mathf.Pow(Mathf.Tan(y1 / z1), -1))) / 0.037f;

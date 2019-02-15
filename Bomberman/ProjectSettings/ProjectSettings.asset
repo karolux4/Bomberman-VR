@@ -589,11 +589,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Template3D
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: Pickle Cannon Industries
+  metroCertificateIssuer: Pickle Cannon Industries
+  metroCertificateNotAfter: 002e2e381ee4d501
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: Bomberman
