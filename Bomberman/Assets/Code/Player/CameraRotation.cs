@@ -6,6 +6,7 @@ using UnityEngine.XR;
 public class CameraRotation : MonoBehaviour {
 
     public GameObject Main_Camera_Control;
+    public GameObject Right_Hand_Control;
     public Vector2 prev_mouse_pos;
     Vector2 smooth;
     public float sensitivity;
@@ -51,5 +52,7 @@ public class CameraRotation : MonoBehaviour {
         //Debug.Log(y+" "+y1);
         player.transform.localRotation = Quaternion.Euler(0f,y , 0f);
         Main_Camera_Control.transform.localRotation = Quaternion.Euler(0f, -this.gameObject.transform.localRotation.eulerAngles.y, 0f);
-	}
+        Right_Hand_Control.transform.localRotation = Quaternion.Euler(-this.gameObject.transform.localRotation.eulerAngles.x,
+            -this.gameObject.transform.localRotation.eulerAngles.y, -this.gameObject.transform.localRotation.eulerAngles.z);
+    }
 }

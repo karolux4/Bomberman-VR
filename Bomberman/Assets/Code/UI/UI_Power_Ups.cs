@@ -16,7 +16,7 @@ public class UI_Power_Ups : MonoBehaviour {
     public GameObject AI_3_Image;
 	void Update ()
     {
-		if(Player.GetComponent<Additional_power_ups>().bomb_kick)
+		/*if(Player.GetComponent<Additional_power_ups>().bomb_kick)
         {
             Bomb_kick.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
@@ -35,6 +35,6 @@ public class UI_Power_Ups : MonoBehaviour {
         if (!AI_3.activeInHierarchy)
         {
             AI_3_Image.GetComponent<Image>().color = new Color32(135, 135, 135, 135);
-        }
+        }*/
     }
 }

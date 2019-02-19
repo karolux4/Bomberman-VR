@@ -53,8 +53,6 @@ public class Game_Load : MonoBehaviour {
         }
         else if(existing_hearts> Player.GetComponent<Additional_power_ups>().lifes_count)
         {
-            RectTransform rec = Damage.GetComponent<RectTransform>();
-            rec.sizeDelta = new Vector2(1920, (((float)1920 / (float)Screen.width) * Screen.height));
             Damage.SetActive(true);
             for(int i=existing_hearts;i> Player.GetComponent<Additional_power_ups>().lifes_count;i--)
             {
