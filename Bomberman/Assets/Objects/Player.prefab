@@ -340,6 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d303b4d8fb6a84cac20fe054d2f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Main_Camera_Control: {fileID: 0}
+  Right_Hand_Control: {fileID: 0}
   prev_mouse_pos: {x: 0, y: 0}
   sensitivity: 5
   smoothing: 2
@@ -932,11 +934,12 @@ MonoBehaviour:
   explosion_horizontal: {fileID: 1533671589835838, guid: cc3dfe41ae0f6ba4583e1985619c7e58,
     type: 3}
   bounce: {fileID: 13400000, guid: 6be1666332106da41abcb798109b28ae, type: 2}
-  strength: 5
   bomb_collision_radius: 0.3
   explosion: {fileID: 8300000, guid: 2ddab959d1117c447a08170dbe705bb5, type: 3}
   mixer: {fileID: 243435129067564376, guid: 432cf00652850be439f7ed5ad7c1539a, type: 2}
-  Shoot_button: Fire1
+  ThrowingAssets: []
+  ControllerPose: 0
+  RealWorldRoot: {fileID: 0}
 --- !u!114 &114924014009395502
 MonoBehaviour:
   m_ObjectHideFlags: 0

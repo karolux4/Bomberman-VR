@@ -8,21 +8,24 @@ public class ControllerVisualization : MonoBehaviour
 {
     private Vector3 right_position;
     public GameObject obj;
-    private LineRenderer renderer;
+    //private LineRenderer renderer;
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         renderer = obj.GetComponent<LineRenderer>();
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(InputTracking.GetLocalPosition(XRNode.RightHand));
         right_position = InputTracking.GetLocalPosition(XRNode.RightHand);
         Quaternion rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
-        obj.transform.localPosition = right_position-new Vector3(0f,1f,0f);
-        obj.transform.localRotation = rotation;
-        renderer.SetPosition(0, new Vector3(0,0,0));
-        renderer.SetPosition(1, Vector3.forward*100f);
+        obj.transform.localPosition = new Vector3(0f,0f,50f);// -new Vector3(0f,1f,0f);
+        obj.transform.localRotation = Quaternion.identity;
+        
+        //renderer.SetPosition(0, new Vector3(0,0,0));
+        //renderer.SetPosition(1, Vector3.forward*100f);
     }
 }
+

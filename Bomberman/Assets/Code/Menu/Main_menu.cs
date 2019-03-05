@@ -28,6 +28,7 @@ public class Main_menu : MonoBehaviour {
     {
         click.Play();
     }
+    /*
     public void MasterVolume(float slider_value)
     {
         mixer.SetFloat("masterVol",Mathf.Log10(slider_value)*20);
@@ -39,9 +40,5 @@ public class Main_menu : MonoBehaviour {
     public void MusicVolume(float slider_value)
     {
         mixer.SetFloat("musicVol", Mathf.Log10(slider_value) * 20);
-    }
-    public void Sensitivity(float slider_value)
-    {
-        GameObject.Find("Sensitivity").GetComponent<Sensitivity_Value>().Sensitivity = slider_value * 4+1;
-    }
+    }*/
 }

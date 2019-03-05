@@ -22,47 +22,62 @@ public class Game_Load : MonoBehaviour {
         existing_hearts = Player.GetComponent<Additional_power_ups>().lifes_count;
         for (int i = 0; i <existing_hearts;i++)
         {
-            float aspect_ratio = (float)Screen.width / (float)1920;
+            //float aspect_ratio = (float)Screen.width / (float)1920;
             GameObject obj = new GameObject("Heart"+(i+1));
             obj.AddComponent<Image>();
             obj.GetComponent<Image>().sprite = Heart;
-            obj.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(200*aspect_ratio, 200*aspect_ratio);
-            obj.transform.SetParent(this.gameObject.GetComponentInChildren<Canvas>().gameObject.transform);
-            float x = -860 + i * 200;
-            float y = -(((float)1920 / (float)Screen.width) * Screen.height)/2+ 100;
-            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
+            obj.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(0.15f, 0.15f);
+            obj.transform.SetParent(this.gameObject.GetComponent<Canvas>().gameObject.transform);
+            float startx;
+            if (existing_hearts%2==0)
+            {
+                startx = -(existing_hearts/2)*0.15f;
+            }
+            else
+            {
+                startx = -(int)(existing_hearts / 2) * 0.15f - 0.075f;
+            }
+            float x = startx + i*0.15f;
+            float y = 0.4f;
+            obj.GetComponent<RectTransform>().localPosition = new Vector3(x, y, -0.05f);
+            obj.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
         }
 	}
     private void Update()
     {
-        if(existing_hearts<Player.GetComponent<Additional_power_ups>().lifes_count)
+        if(existing_hearts!=Player.GetComponent<Additional_power_ups>().lifes_count)
         {
-            for(int i=existing_hearts;i < Player.GetComponent<Additional_power_ups>().lifes_count;i++)
+            if(existing_hearts>Player.GetComponent<Additional_power_ups>().lifes_count)
             {
-                float aspect_ratio = (float)Screen.width / (float)1920;
+                Damage.SetActive(true);
+                StartCoroutine(DamageWait());
+            }
+            for(int i=0;i<existing_hearts;i++)
+            {
+                Destroy(GameObject.Find("Heart"+(i+1)));
+            }
+            for(int i=0;i < Player.GetComponent<Additional_power_ups>().lifes_count;i++)
+            {
                 GameObject obj = new GameObject("Heart" + (i + 1));
                 obj.AddComponent<Image>();
                 obj.GetComponent<Image>().sprite = Heart;
-                obj.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(200 * aspect_ratio, 200 * aspect_ratio);
-                obj.transform.SetParent(this.gameObject.GetComponentInChildren<Canvas>().gameObject.transform);
-                float x = -860 + i * 200;
-                float y = -(((float)1920 / (float)Screen.width) * Screen.height) / 2 + 100;
-                obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
-            }
-            existing_hearts = Player.GetComponent<Additional_power_ups>().lifes_count;
-        }
-        else if(existing_hearts> Player.GetComponent<Additional_power_ups>().lifes_count)
-        {
-            Damage.SetActive(true);
-            for(int i=existing_hearts;i> Player.GetComponent<Additional_power_ups>().lifes_count;i--)
-            {
-                if (i > 0)
+                obj.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(0.15f, 0.15f);
+                obj.transform.SetParent(this.gameObject.GetComponent<Canvas>().gameObject.transform);
+                float startx;
+                if (Player.GetComponent<Additional_power_ups>().lifes_count % 2 == 0)
                 {
-                    Destroy(GameObject.Find("Heart" + i));
+                    startx = -(Player.GetComponent<Additional_power_ups>().lifes_count / 2) * 0.15f;
                 }
+                else
+                {
+                    startx = -(int)(Player.GetComponent<Additional_power_ups>().lifes_count / 2) * 0.15f - 0.075f;
+                }
+                float x = startx + i * 0.15f;
+                float y = 0.4f;
+                obj.GetComponent<RectTransform>().localPosition = new Vector3(x, y, -0.05f);
+                obj.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
             }
             existing_hearts = Player.GetComponent<Additional_power_ups>().lifes_count;
-            StartCoroutine(DamageWait());
         }
 
         if ((ActiveAICount <= 0)&&(!started))
