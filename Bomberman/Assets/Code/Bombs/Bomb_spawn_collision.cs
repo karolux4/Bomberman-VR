@@ -11,12 +11,17 @@ public class Bomb_spawn_collision : MonoBehaviour {
     public AudioMixerGroup mixer { get; set; }
     public bool collided { get; set; }
     private int bounce_count;
-    private bool kicked = false;
+    public bool kicked = false;
+    private float existing_time=0;
     private void Start()
     {
         bounce_count = 0;
         collided = false;
         StartCoroutine(CheckForCollision());
+    }
+    private void Update()
+    {
+        existing_time += Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -47,7 +52,7 @@ public class Bomb_spawn_collision : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "AI"))
+        if (((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "AI")) && existing_time>0.2)
         {
           if (collision.gameObject.GetComponent<Additional_power_ups>().bomb_kick)
           {
@@ -55,7 +60,9 @@ public class Bomb_spawn_collision : MonoBehaviour {
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 if (collision.gameObject.tag == "Player")
                 {
-                    direction = collision.gameObject.GetComponent<Transform>().forward; // finding the way player is watching
+                    Vector3 d1 = new Vector3(this.gameObject.transform.localPosition.x- collision.gameObject.transform.localPosition.x, 0,
+                        this.gameObject.transform.localPosition.z- collision.gameObject.transform.localPosition.z); // finding the way player is watching
+                    direction = d1.normalized;
                 }
                 else
                 {
@@ -69,7 +76,7 @@ public class Bomb_spawn_collision : MonoBehaviour {
                             break;
                         case "Left":
                             direction = new Vector3(-1f, 0f, 0f);
-                            break;
+                            break;  
                         case "Right":
                             direction = new Vector3(1f, 0f, 0f);
                             break;

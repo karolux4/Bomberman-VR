@@ -80,7 +80,7 @@ public class Shooting_physics : MonoBehaviour {
                     count--;
                     allowed_to_throw = true;
                     RemoveDevice(id);
-                    throw new System.Exception("Throw failed!!!");
+                    //throw new System.Exception("Throw failed!!!");
                 }
             }
         }

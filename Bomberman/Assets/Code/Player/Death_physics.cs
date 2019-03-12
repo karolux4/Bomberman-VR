@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Death_physics : MonoBehaviour {
     public GameObject UI;
+    public GameObject Power_up_Menu;
     public GameObject Win_Menu;
     public GameObject Death_Menu;
     public AudioSource Death;
@@ -30,6 +31,7 @@ public class Death_physics : MonoBehaviour {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             UI.SetActive(false);
+            Power_up_Menu.SetActive(false);
             Death_Menu.SetActive(true);
             Background.Stop();
             Death.Play();

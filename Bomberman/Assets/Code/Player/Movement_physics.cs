@@ -163,7 +163,12 @@ public class Movement_physics : MonoBehaviour {
             if (Physics.SphereCast(transform.position + new Vector3(0f, 0.5f, 0f), 0.48f, Quaternion.Euler(0, i * 90, 0) * Vector3.forward, out Hit, Mathf.Infinity, layer_mask))
             {
                 float distance1 = Hit.distance;
-                if(Hit.distance<1f)
+                if((Hit.distance<1f)&&(this.gameObject.GetComponent<Additional_power_ups>().bomb_kick)&&(Hit.collider.gameObject.layer==11))
+                {
+                    Kick(Hit.collider.gameObject, Quaternion.Euler(0, i * 90, 0) * Vector3.forward);
+                    return true;
+                }
+                else if(Hit.distance < 1f)
                 {
                     return false;
                 }
@@ -195,5 +200,12 @@ public class Movement_physics : MonoBehaviour {
         {
             posZ = Mathf.Sign(pos.z) * ((int)Mathf.Abs(pos.z) + 0.5f);
         }
+    }
+    private void Kick(GameObject bomb, Vector3 direction)
+    {
+                bomb.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                bomb.GetComponent<Rigidbody>().AddForce(direction * 10f, ForceMode.Impulse);
+                bomb.GetComponent<SphereCollider>().material = null;
+                bomb.GetComponent<Bomb_spawn_collision>().kicked = true;
     }
 }
