@@ -6,7 +6,6 @@ using UnityEngine.XR;
 public class CameraRotation : MonoBehaviour {
 
     public GameObject Main_Camera_Control;
-    public GameObject Right_Hand_Control;
     public Vector2 prev_mouse_pos;
     Vector2 smooth;
     public float sensitivity;

@@ -43,10 +43,10 @@ public class Death_physics : MonoBehaviour {
                     GameObject.Find("Stats").GetComponent<Stats>().Wins[index]++;
                 }
             }
-            GameObject Camera = this.gameObject.transform.GetChild(0).gameObject;
-            Camera.transform.parent = null;
-            Camera.transform.localPosition = new Vector3(0.5f, 20f, 2.5f);
-            Camera.transform.eulerAngles = new Vector3(90, 0, 0);
+            GameObject Camera = this.gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject;
+            Camera.transform.parent = GameObject.Find("Skybox").transform;
+            //Camera.transform.localPosition = new Vector3(0.5f, 20f, 2.5f);
+            //Camera.transform.eulerAngles = new Vector3(90, 0, 0);
             this.gameObject.SetActive(false);
         }
         else if (gameObject.tag == "AI" && gameObject.GetComponent<Additional_power_ups>().lifes_count <= 0)
