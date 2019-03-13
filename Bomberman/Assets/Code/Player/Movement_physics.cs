@@ -93,10 +93,12 @@ public class Movement_physics : MonoBehaviour {
         if(Input.GetButton("Stats")&&(!Stats.activeInHierarchy))
         {
             Stats.SetActive(true);
+            UI.SetActive(false);
         }
         else if(!Input.GetButton("Stats"))
         {
             Stats.SetActive(false);
+            UI.SetActive(true);
         }
      }
     public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
