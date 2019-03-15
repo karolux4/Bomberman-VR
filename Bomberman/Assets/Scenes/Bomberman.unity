@@ -1602,7 +1602,7 @@ MonoBehaviour:
   limit: 1
   bounce_limit: 0
   speed: 1
-  lifes_count: 0
+  lifes_count: 3
   bomb_kick: 0
   invincible: 0
   explosion_time: 2.8
@@ -2019,6 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a14f45071722674f94986cde355df9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 86128811}
 --- !u!114 &236509184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,6 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a14f45071722674f94986cde355df9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 86128811}
 --- !u!4 &237531820
 Transform:
   m_ObjectHideFlags: 0
@@ -2652,7 +2654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 86128811}
   Heart: {fileID: 21300000, guid: 7e6a8df89b2a5454685a5a1f442b639f, type: 3}
-  UI: {fileID: 1590408739}
+  UI: {fileID: 703119025}
   Damage: {fileID: 1490582965}
   Win_Menu: {fileID: 2050967114}
   ActiveAICount: 3
@@ -6444,7 +6446,7 @@ PrefabInstance:
     - target: {fileID: 114602405721364086, guid: eba9613be9a019440843ef0a42d7011f,
         type: 3}
       propertyPath: lifes_count
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114602405721364086, guid: eba9613be9a019440843ef0a42d7011f,
         type: 3}
@@ -23191,7 +23193,7 @@ MonoBehaviour:
   limit: 1
   bounce_limit: 0
   speed: 1
-  lifes_count: 0
+  lifes_count: 3
   bomb_kick: 0
   invincible: 0
   explosion_time: 2.8
@@ -25800,6 +25802,11 @@ PrefabInstance:
     - target: {fileID: 114924014009395502, guid: 81b033c75046226449c13baac3b10670,
         type: 3}
       propertyPath: bomb_kick
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924014009395502, guid: 81b033c75046226449c13baac3b10670,
+        type: 3}
+      propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1685657955454330, guid: 81b033c75046226449c13baac3b10670, type: 3}
@@ -27487,6 +27494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a14f45071722674f94986cde355df9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 86128811}
 --- !u!4 &2050967117
 Transform:
   m_ObjectHideFlags: 0

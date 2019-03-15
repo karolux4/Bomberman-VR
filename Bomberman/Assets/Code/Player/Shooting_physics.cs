@@ -21,7 +21,7 @@ public class Shooting_physics : MonoBehaviour {
     public GameObject[] ThrowingAssets;
     public InteractionSourceNode ControllerPose = InteractionSourceNode.Grip;
     public Transform RealWorldRoot;
-
+    public float WaitTime = 0;
     private readonly Dictionary<uint, Transform> devices = new Dictionary<uint, Transform>();
     private readonly Dictionary<uint, int> modelIndecies = new Dictionary<uint, int>();
     private readonly Dictionary<uint, bool> isDetatched = new Dictionary<uint, bool>();
@@ -36,6 +36,10 @@ public class Shooting_physics : MonoBehaviour {
     }
     private void Update()
     {
+        if(WaitTime<0.2f)
+        {
+            WaitTime += Time.deltaTime;
+        }
         /*foreach(var dev in devices)
         {
             Debug.Log(dev.Value);
@@ -44,7 +48,7 @@ public class Shooting_physics : MonoBehaviour {
     }
     private void InteractionManager_InteractionSourcePressed(InteractionSourcePressedEventArgs args)
     {
-        if ((count < player.GetComponent<Additional_power_ups>().limit) && (allowed_to_throw))
+        if ((count < player.GetComponent<Additional_power_ups>().limit) && (allowed_to_throw)&&(WaitTime>=0.2f))
         {
             uint id = args.state.source.id;
             if (args.pressType == InteractionSourcePressType.Select)

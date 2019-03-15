@@ -86,6 +86,7 @@ public class Game_Load : MonoBehaviour {
             started = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            Player.GetComponent<Movement_physics>().end = true;
             UI.SetActive(false);
             Win_Menu.SetActive(true);
             Background.Stop();

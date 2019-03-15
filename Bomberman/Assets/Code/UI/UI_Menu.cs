@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UI_Menu : MonoBehaviour {
+    public GameObject Player;
     public void Resume()
     {
+        Player.GetComponent<Shooting_physics>().WaitTime = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;

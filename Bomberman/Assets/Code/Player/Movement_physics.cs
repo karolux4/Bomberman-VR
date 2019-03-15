@@ -66,7 +66,7 @@ public class Movement_physics : MonoBehaviour {
                 }
             }
 
-            if (CanMove&&(Mathf.Abs(x)>0||Mathf.Abs(z)>0) && AbleToMove(x, z))
+            if (CanMove&&(Mathf.Abs(x)>0||Mathf.Abs(z)>0) && AbleToMove(ref x,ref z))
             {
                 CanMove = false;
                 //transform.Translate(x, 0, z);
@@ -99,7 +99,7 @@ public class Movement_physics : MonoBehaviour {
             Stats.SetActive(true);
             UI.SetActive(false);
         }
-        else if(!Input.GetButton("Stats"))
+        else if(!Input.GetButton("Stats")&&(!PauseMenu.activeInHierarchy)&&!end)
         {
             Stats.SetActive(false);
             UI.SetActive(true);
@@ -119,10 +119,10 @@ public class Movement_physics : MonoBehaviour {
         }
         Circle.SetActive(false);
         Circle.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f-(gameObject.GetComponent<Additional_power_ups>().speed-1f)*0.133f);
         CanMove = true;
     }
-    private bool AbleToMove(float x, float z)
+    private bool AbleToMove(ref float x,ref float z)
     {
         float angle = this.transform.localRotation.eulerAngles.y;
         angle = Mathf.Round(angle / 90) * 90;
