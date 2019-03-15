@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement_physics : MonoBehaviour {
     public GameObject PauseMenu, UI, Stats;
+    public GameObject Circle;
     public bool end = false;
     private Animator animator;
     public string Horizontal_Axis;
@@ -33,8 +34,11 @@ public class Movement_physics : MonoBehaviour {
         {
             float posX;
             float posZ;
-            CenterPosition(this.gameObject, out posX, out posZ);
-            this.gameObject.transform.localPosition = new Vector3(posX, transform.localPosition.y, posZ);
+            if (CanMove)
+            {
+                CenterPosition(this.gameObject, out posX, out posZ);
+                this.gameObject.transform.localPosition = new Vector3(posX, transform.localPosition.y, posZ);
+            }
             x = (float)Input.GetAxis(Horizontal_Axis);
             z = (float)Input.GetAxis(Vertical_Axis);
             if(Mathf.Abs(x)>Mathf.Abs(z))
@@ -65,9 +69,9 @@ public class Movement_physics : MonoBehaviour {
             if (CanMove&&(Mathf.Abs(x)>0||Mathf.Abs(z)>0) && AbleToMove(x, z))
             {
                 CanMove = false;
-                transform.Translate(x, 0, z);
+                //transform.Translate(x, 0, z);
                 Vector3 target = this.transform.localPosition + new Vector3(x, 0, z);
-                StartCoroutine(MoveToPosition(this.transform, target, 1f));
+                StartCoroutine(MoveToPosition(this.transform, target, 0.1f));
             }
         }
         animator = this.gameObject.GetComponent<Animator>();
@@ -84,11 +88,11 @@ public class Movement_physics : MonoBehaviour {
 
         if (Input.GetButton("Cancel")&&(!PauseMenu.activeInHierarchy)&&!end)
         {
-            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             UI.SetActive(false);
             PauseMenu.SetActive(true);
+            Time.timeScale = 0;
         }   
         if(Input.GetButton("Stats")&&(!Stats.activeInHierarchy))
         {
@@ -103,14 +107,18 @@ public class Movement_physics : MonoBehaviour {
      }
     public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
     {
-        /*var currentPos = transform.position;
+        var currentPos = transform.position;
         var t = 0f;
-        while (t < 1)
+        while (t < 1f)
         {
+            Circle.SetActive(true);
             t += Time.deltaTime / timeToMove;
             transform.position = Vector3.Lerp(currentPos, position, t);
+            Circle.transform.localScale = Vector3.Lerp(Circle.transform.localScale, new Vector3(0.6f, 0.6f, 1f), t);
             yield return null;
-        }*/
+        }
+        Circle.SetActive(false);
+        Circle.transform.localScale = new Vector3(1f, 1f, 1f);
         yield return new WaitForSeconds(0.2f);
         CanMove = true;
     }
