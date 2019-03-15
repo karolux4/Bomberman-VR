@@ -114,11 +114,11 @@ public class Movement_physics : MonoBehaviour {
             Circle.SetActive(true);
             t += Time.deltaTime / timeToMove;
             transform.position = Vector3.Lerp(currentPos, position, t);
-            Circle.transform.localScale = Vector3.Lerp(Circle.transform.localScale, new Vector3(0.6f, 0.6f, 1f), t);
+            Circle.transform.localScale = Vector3.Lerp(Circle.transform.localScale, new Vector3(0.25f, 0.25f, 1f), t);
             yield return null;
         }
         Circle.SetActive(false);
-        Circle.transform.localScale = new Vector3(1f, 1f, 1f);
+        Circle.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
         yield return new WaitForSeconds(0.2f);
         CanMove = true;
     }
