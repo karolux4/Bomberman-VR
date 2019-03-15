@@ -14,14 +14,7 @@ public class Death_physics : MonoBehaviour {
     public List<GameObject> AI;
 	// Update is called once per frame
 	void Update () {
-        if(SceneManager.GetActiveScene().buildIndex==1)
-        {
-            SinglePlayer();
-        }
-        else
-        {
-            Multiplayer();
-        }
+        SinglePlayer();
 	}
     private void SinglePlayer()
     {
