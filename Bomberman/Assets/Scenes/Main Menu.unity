@@ -7270,7 +7270,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.25
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &1105770514
 MonoBehaviour:
   m_ObjectHideFlags: 0
