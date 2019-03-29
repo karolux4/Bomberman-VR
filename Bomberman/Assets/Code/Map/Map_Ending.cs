@@ -75,6 +75,20 @@ public class Map_Ending : MonoBehaviour {
             }
             else if(Hit.collider.gameObject.name!="Ground")
             {
+                if(Hit.collider.gameObject.layer==11)
+                {
+                    GameObject creator = Hit.collider.gameObject.GetComponent<Bomb_explosion>().creator;
+                    if(creator.layer==10) //Player layer
+                    {
+                        creator.GetComponent<Shooting_physics>().count--;
+                        creator.GetComponent<Shooting_physics>().allowed_to_throw = true;
+                    }
+                    else
+                    {
+                        creator.GetComponent<AI_Shooting>().count--;
+                        creator.GetComponent<AI_Shooting>().allowed_to_throw = true;
+                    }
+                }
                 Destroy(Hit.collider.GetComponentInParent<Transform>().gameObject);
             }
         }
