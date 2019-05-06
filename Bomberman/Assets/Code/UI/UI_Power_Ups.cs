@@ -23,7 +23,7 @@ public class UI_Power_Ups : MonoBehaviour {
         Bounce.GetComponent<TextMeshProUGUI>().text = (Player.GetComponent<Additional_power_ups>().bounce_limit).ToString();
         Damage.GetComponent<TextMeshProUGUI>().text = (Player.GetComponent<Additional_power_ups>().bomb_power).ToString();
         Limit.GetComponent<TextMeshProUGUI>().text = (Player.GetComponent<Additional_power_ups>().limit).ToString();
-        Speed.GetComponent<TextMeshProUGUI>().text = ((float)(Player.GetComponent<Additional_power_ups>().speed-0.5)/(float)0.5).ToString();
+        Speed.GetComponent<TextMeshProUGUI>().text = ((float)(Player.GetComponent<Additional_power_ups>().speed-0.75)/(float)0.25).ToString();
         /*
         if(!AI_1.activeInHierarchy)
         {

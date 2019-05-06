@@ -26,9 +26,9 @@ public class Power_up1 : MonoBehaviour {
             }
             else if(gameObject.tag == "Speed_power_up")
             {
-                if (Player.GetComponent<Additional_power_ups>().speed != 3)
+                if (Player.GetComponent<Additional_power_ups>().speed != 2.25f)
                 {
-                    Player.GetComponent<Additional_power_ups>().speed += 0.5f;
+                    Player.GetComponent<Additional_power_ups>().speed += 0.25f;
                 }
             }
             else if(gameObject.tag=="Extra_life_power_up")

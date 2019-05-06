@@ -12,6 +12,7 @@ public class Shooting_physics : MonoBehaviour {
     public GameObject player;
     public GameObject explosion_vertical;
     public GameObject explosion_horizontal;
+    public GameObject Destruction;
     public PhysicMaterial bounce;
     public int count { get; set; }
     public bool allowed_to_throw { get; set; }
@@ -230,6 +231,7 @@ public class Shooting_physics : MonoBehaviour {
             player_bomb.GetComponent<Bomb_spawn_collision>().creator = player;
             player_bomb.GetComponent<Bomb_spawn_collision>().explosion_vertical = explosion_vertical;
             player_bomb.GetComponent<Bomb_spawn_collision>().explosion_horizontal = explosion_horizontal;
+            player_bomb.GetComponent<Bomb_spawn_collision>().Destruction = Destruction;
             player_bomb.GetComponent<Bomb_spawn_collision>().explosion = explosion;
             player_bomb.GetComponent<Bomb_spawn_collision>().mixer = mixer;
     }

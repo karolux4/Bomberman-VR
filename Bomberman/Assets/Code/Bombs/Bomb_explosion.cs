@@ -7,6 +7,7 @@ public class Bomb_explosion : MonoBehaviour {
     public GameObject creator { get; set; }
     public GameObject explosion_vertical { get; set; }
     public GameObject explosion_horizontal { get; set; }
+    public GameObject Destruction { get; set; }
     public bool exploding { get; set; }
     public Coroutine Explosive;
     public AudioClip explosion { get; set; }
@@ -132,6 +133,8 @@ public class Bomb_explosion : MonoBehaviour {
                     if ((distance1 < exploding_power) && (Hit.collider.GetComponentInParent<BoxCollider>().tag == "Boxes"))
                     {
                         Destroy(Hit.collider.gameObject.GetComponentInParent<BoxCollider>().gameObject);
+                        Destruction.GetComponent<Transform>().position = Hit.collider.gameObject.transform.position+ new Vector3(0f, 0.55f, 0f);
+                        Instantiate(Destruction);
                     }
                 }
                 if ((distance1 < exploding_power) && ((Hit.collider.tag == "Player") || (Hit.collider.tag == "AI")))

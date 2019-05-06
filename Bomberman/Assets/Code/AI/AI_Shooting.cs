@@ -8,6 +8,7 @@ public class AI_Shooting : MonoBehaviour {
     public GameObject bomb;
     public GameObject explosion_vertical;
     public GameObject explosion_horizontal;
+    public GameObject Destruction;
     public PhysicMaterial bounce;
     public int count { get; set; }
     public bool allowed_to_throw { get; set; }
@@ -99,6 +100,7 @@ public class AI_Shooting : MonoBehaviour {
         AI_bomb.GetComponent<Bomb_spawn_collision>().creator = gameObject;
         AI_bomb.GetComponent<Bomb_spawn_collision>().explosion_vertical = explosion_vertical;
         AI_bomb.GetComponent<Bomb_spawn_collision>().explosion_horizontal = explosion_horizontal;
+        AI_bomb.GetComponent<Bomb_spawn_collision>().Destruction = Destruction;
         AI_bomb.GetComponent<Bomb_spawn_collision>().explosion = explosion;
         AI_bomb.GetComponent<Bomb_spawn_collision>().mixer = mixer;
     }
