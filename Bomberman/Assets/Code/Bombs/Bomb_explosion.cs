@@ -123,7 +123,7 @@ public class Bomb_explosion : MonoBehaviour {
     {
         RaycastHit Hit;
         int layer_mask = LayerMask.GetMask("Player", "Map", "Bombs", "AI");
-        if (Physics.SphereCast(position, 0.48f, Quaternion.Euler(0, i * 90, 0) * transform.forward, out Hit, Mathf.Infinity, layer_mask))
+        if (Physics.SphereCast(position, 0.48f, Quaternion.Euler(0, i * 90, 0) * new Vector3(0,0,1), out Hit, Mathf.Infinity, layer_mask))
         {
             float distance1 = Hit.distance;
             if (Hit.collider.gameObject.layer != 11)
@@ -221,7 +221,7 @@ public class Bomb_explosion : MonoBehaviour {
         }
         for (int i=0;i<8;i++)
         {
-            if (Physics.Raycast(position, Quaternion.Euler(0, i * 45, 0) * transform.forward, out hit, 0.6f, layer_mask))
+            if (Physics.Raycast(position, Quaternion.Euler(0, i * 45, 0) * new Vector3(0,0,1), out hit, 0.6f, layer_mask))
             {
                 if(hit.collider.tag=="Player"||hit.collider.tag=="AI")
                 {
